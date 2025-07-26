@@ -1,12 +1,13 @@
-services:
 
+
+services:
   db:
     image: postgres:latest
     container_name: videoflix_database
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: videoflix_db
+      POSTGRES_USER: videoflix_user
+      POSTGRES_PASSWORD: supersecretpassword
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -20,9 +21,8 @@ services:
     build:
       context: .
       dockerfile: backend.Dockerfile
-    env_file: .env
     container_name: videoflix_backend
-
+    env_file: .env
     volumes:
       - .:/app
       - videoflix_media:/app/media
@@ -32,9 +32,6 @@ services:
     depends_on:
       - db
       - redis
-
-
-
 
 volumes:
   postgres_data:
