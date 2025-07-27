@@ -73,3 +73,5 @@ def send_password_reset_email(email: str, uid: str, token: str) -> None:
         html_message=html_message,
         fail_silently=False,
     )
+
+

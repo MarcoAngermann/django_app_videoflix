@@ -76,3 +76,4 @@ def test_video_segment_video_not_found(settings):
     url = reverse("video-segment", kwargs={"movie_id": 99999, "resolution": "480p", "segment": "segment_001.ts"})
     response = client.get(url)
     assert response.status_code == 404
+
